@@ -1,0 +1,56 @@
+﻿@using MvcBookStore1.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div style="min-height: 800px">
+
+    <div class="products">
+        <h3>Sách mới </h3>
+        <ul>
+            @{ Html.RenderAction("Search", "PartialView");}
+            @foreach (var sach in Model)
+            {
+                <li>
+                    <div class="product" style="min-height:500px">
+                        <a href="@Url.Action("Details","BookStore", new {id = sach.Masach })" class="info">
+                            <span class="holder">
+                                <img src="~/images/@sach.Hinhminhhoa" alt="@sach.Tensach" />
+                                <span class="book-name">@sach.Tensach</span>
+                                <span class="author">15 reviews</span>                              
+                            </span>
+                        </a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div style="position:relative;">
+    @*Tạo liên kết các trang *@
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+            border: 1px solid black;
+            padding: 0.5em 1em;
+            background-color: #E6E6FA;
+        }
+
+        .MenuTrang {
+            margin: 1em;
+        }
+
+            .MenuTrang li.active a {
+                color: red !important;
+            }
+    </style>
+</div>

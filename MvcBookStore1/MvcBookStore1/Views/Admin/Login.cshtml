@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 Animation Cloud and login form</title>
+
+    <link href="~/Content/Login-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="clouds">
+        <div class="cloud x1"></div>
+        <!-- Time for multiple clouds to dance around -->
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+
+    <div class="container">
+        <h4 style="text-align:left; font-size:24px;">ĐĂNG NHẬP HỆ THỐNG QUẢN TRỊ</h4>
+        <p style="text-align:left; font-size:15px; padding:5px;">Vui lòng nhập User và Password</p>
+        <h4 style="color:red; text-align:left">@ViewBag.Thongbao</h4>
+
+
+        <div id="login">
+            <form method="post">
+                <fieldset class="clearfix">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        <p><span class="fontawesome-user"></span>
+                        <input type="text" name="username" placeholder="Usename..."  class="form-username form-control" id="form-username">@ViewData["Loi1"]</p> <!-- JS because of IE support; better: placeholder="Username" -->
+                        <p><span class="fontawesome-lock"></span>
+                        <input type="password" name="password" placeholder="Password..."  class="form-password form-control" >@ViewData["Loi2"]</p> <!-- JS because of IE support; better: placeholder="Password" -->
+                        <p><input type="submit" value="Sign In"></p>
+                    }
+                </fieldset>
+
+            </form>
+
+            <p>Not a member? <a href="#" class="blue">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
+
+        </div> <!-- end login -->
+    </div>
+    <div class="bottom">  <h3><a href="http://softouchz.com/">www.softouchz.com</a></h3></div>
+
+
+
+</body>
+
+</html>

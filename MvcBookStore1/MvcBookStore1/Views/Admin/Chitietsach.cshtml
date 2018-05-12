@@ -1,0 +1,85 @@
+﻿@model MvcBookStore1.Models.SACH
+
+@{
+    ViewBag.Title = "Chitietsach";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>THÔNG TIN CHI TIẾT SÁCH</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <p><span style="font-weight:bold">Tên sách :</span> @Html.DisplayFor(model => model.Tensach)</p>
+        </dt>
+            
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Đơn vị tính :</span> @Html.DisplayFor(model => model.Donvitinh)
+            </p>        
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Gía bán :</span> @String.Format("{0:0,0}", Model.Dongia) VNĐ
+            </p>       
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Mô tả :</span>
+            <span style="width:600px; text-align:justify">@Html.DisplayFor(model => model.Mota)</span>
+            </p>
+        </dt>
+
+        <dt>
+            <p >
+                <span style="font-weight:bold">Ảnh bìa : </span><img src="@Url.Content("~/images/" + Model.Hinhminhhoa)" width="90px" />
+            </p>      
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Chủ đề :</span> @Html.DisplayFor(model => model.CHUDE.TenChuDe)
+            </p>          
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">NXB : </span> @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+            </p>    
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Ngày cập nhật :</span> @String.Format("{0:dd/MM/yyyy}", Model.Ngaycapnhat)
+            </p>           
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Số lượng tồn:</span>@Html.DisplayFor(model => model.Soluongban)
+            </p>
+             
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Số lượt xem :</span> @Html.DisplayFor(model => model.solanxem)
+            </p>          
+        </dt>
+
+        <dt>
+            <p>
+                <span style="font-weight:bold">Moi : </span> @Html.DisplayFor(model => model.moi)
+            </p>        
+        </dt>
+    </dl>
+    <!--=========================================================================-->
+</div>
+<p>
+    @Html.ActionLink("ĐIỀU CHỈNH", "Suasach", new { id = Model.Masach }) |
+    @Html.ActionLink("TRỞ VỀ", "Sach")
+</p>
